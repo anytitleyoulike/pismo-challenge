@@ -5,17 +5,24 @@ import com.example.test.pismo.application.exception.NotFoundException;
 import com.example.test.pismo.application.repository.AccountRepository;
 import com.example.test.pismo.application.repository.TransactionRepository;
 import com.example.test.pismo.domain.entities.TransactionEntity;
+import com.example.test.pismo.domain.factory.OperationFactory;
 import com.example.test.pismo.domain.service.TransactionService;
+import com.example.test.pismo.domain.service.strategy.OperationStrategy;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class TransactionSeviceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
+    private final OperationFactory operationFactory;
 
-    public TransactionSeviceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository) {
+
+    public TransactionSeviceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository, List<OperationStrategy> operationStrategy, OperationFactory operationFactory) {
         this.transactionRepository = transactionRepository;
         this.accountRepository = accountRepository;
+        this.operationFactory = operationFactory;
     }
 
     @Override
@@ -23,21 +30,17 @@ public class TransactionSeviceImpl implements TransactionService {
             var account = this.accountRepository.findById(transactionDTO.accountId()).
                     orElseThrow(() -> new NotFoundException("Account not found"));
 
-            var adjustedAmount = 0.0;
+            OperationStrategy operation;
             switch (transactionDTO.operationTypeId()) {
                 case PURCHASE, INSTALLMENT_PURCHASE, WITHDRAWAL -> {
-                    adjustedAmount = -Math.abs(transactionDTO.amount());
+                    operation = this.operationFactory.getOperation("DEBIT");
                 }
                 case PAYMENT -> {
-                   adjustedAmount = Math.abs(transactionDTO.amount());
+                    operation = this.operationFactory.getOperation("CREDIT");
                 }
                 default -> throw new IllegalArgumentException("Invalid operation type");
             }
 
-            return transactionRepository.save(new TransactionEntity(
-                    account,
-                    adjustedAmount,
-                    transactionDTO.operationTypeId().getOperationId())
-            );
+            return operation.execute(account, transactionDTO);
     }
 }
