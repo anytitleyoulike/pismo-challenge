@@ -4,8 +4,6 @@ import com.example.test.pismo.application.dto.request.AccountDTO;
 import com.example.test.pismo.application.dto.request.TransactionDTO;
 import com.example.test.pismo.application.exception.NotFoundException;
 import com.example.test.pismo.domain.entities.AccountEntity;
-import com.example.test.pismo.domain.entities.TransactionEntity;
-import com.example.test.pismo.domain.enums.OperationType;
 import com.example.test.pismo.domain.factory.OperationFactory;
 import com.example.test.pismo.domain.port.Strategy.OperationStrategy;
 import com.example.test.pismo.infrastructure.repository.AccountRepository;
@@ -21,7 +19,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 public class TransactionServiceImplTest {
