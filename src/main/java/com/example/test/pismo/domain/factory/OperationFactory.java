@@ -1,7 +1,7 @@
 package com.example.test.pismo.domain.factory;
 
 
-import com.example.test.pismo.domain.service.strategy.OperationStrategy;
+import com.example.test.pismo.domain.port.Strategy.OperationStrategy;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

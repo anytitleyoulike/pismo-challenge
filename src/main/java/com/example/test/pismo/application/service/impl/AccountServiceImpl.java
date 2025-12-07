@@ -1,12 +1,12 @@
-package com.example.test.pismo.domain.service.impl;
+package com.example.test.pismo.application.service.impl;
 
 import com.example.test.pismo.application.dto.request.AccountDTO;
 import com.example.test.pismo.application.dto.response.AccountInfoResponse;
 import com.example.test.pismo.application.exception.AccountExistentException;
 import com.example.test.pismo.application.exception.NotFoundException;
-import com.example.test.pismo.application.repository.AccountRepository;
+import com.example.test.pismo.infrastructure.repository.AccountRepository;
 import com.example.test.pismo.domain.entities.AccountEntity;
-import com.example.test.pismo.domain.service.AccountService;
+import com.example.test.pismo.domain.port.AccountService;
 import org.springframework.stereotype.Service;
 
 @Service

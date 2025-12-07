@@ -2,7 +2,7 @@ package com.example.test.pismo.application.controller;
 
 import com.example.test.pismo.application.dto.request.TransactionDTO;
 import com.example.test.pismo.application.dto.response.TransactionResponse;
-import com.example.test.pismo.domain.service.TransactionService;
+import com.example.test.pismo.domain.port.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

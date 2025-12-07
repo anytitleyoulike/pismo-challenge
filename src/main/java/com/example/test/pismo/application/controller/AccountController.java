@@ -2,9 +2,8 @@ package com.example.test.pismo.application.controller;
 
 import com.example.test.pismo.application.dto.request.AccountDTO;
 import com.example.test.pismo.application.dto.response.AccountInfoResponse;
-import com.example.test.pismo.domain.service.AccountService;
+import com.example.test.pismo.domain.port.AccountService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

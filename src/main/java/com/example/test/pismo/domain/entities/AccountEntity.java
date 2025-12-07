@@ -21,6 +21,11 @@ public class AccountEntity {
         this.documentNumber = documentNumber;
     }
 
+    public AccountEntity(Integer id, String documentNumber) {
+        this.id = id;
+        this.documentNumber = documentNumber;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,13 +1,13 @@
-package com.example.test.pismo.domain.service.impl;
+package com.example.test.pismo.application.service.impl;
 
 import com.example.test.pismo.application.dto.request.TransactionDTO;
 import com.example.test.pismo.application.exception.NotFoundException;
-import com.example.test.pismo.application.repository.AccountRepository;
-import com.example.test.pismo.application.repository.TransactionRepository;
+import com.example.test.pismo.infrastructure.repository.AccountRepository;
+import com.example.test.pismo.infrastructure.repository.TransactionRepository;
 import com.example.test.pismo.domain.entities.TransactionEntity;
 import com.example.test.pismo.domain.factory.OperationFactory;
-import com.example.test.pismo.domain.service.TransactionService;
-import com.example.test.pismo.domain.service.strategy.OperationStrategy;
+import com.example.test.pismo.domain.port.TransactionService;
+import com.example.test.pismo.domain.port.Strategy.OperationStrategy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
