@@ -19,7 +19,7 @@ To install the application, follow these steps:
    ```bash
     docker-compose up -d
     ```
-4. Build the project using Maven:
+4. Build the project and run unit / E2E tests using Maven:
    ```bash
     mvn clean install
     ```

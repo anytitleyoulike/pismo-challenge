@@ -19,7 +19,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity<AccountInfoResponse> create(@RequestBody @Validated AccountDTO accountDTO) {
+    public ResponseEntity<AccountInfoResponse> create(@RequestBody @Valid AccountDTO accountDTO) {
         var newAccount = accountService.createAccount(accountDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
