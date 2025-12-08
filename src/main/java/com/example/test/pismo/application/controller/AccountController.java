@@ -31,7 +31,7 @@ public class AccountController {
     public ResponseEntity<AccountInfoResponse> getAccount(@PathVariable @Valid String accountId) {
 
         if(accountId == null || accountId.isEmpty() || !accountId.matches("^\\d+$")) {
-            throw new IllegalArgumentException("Account ID must not be null or empty");
+            throw new IllegalArgumentException("Wrong account ID format");
         }
         var account = accountService.getAccountById(Integer.parseInt(accountId));
         return ResponseEntity.ok(account);
