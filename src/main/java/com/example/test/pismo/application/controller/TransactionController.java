@@ -27,7 +27,8 @@ public class TransactionController {
                     newTransaction.getId(),
                     newTransaction.getAccount().getId(),
                     newTransaction.getOperationTypeId(),
-                    newTransaction.getAmount()
+                    newTransaction.getAmount(),
+                    newTransaction.getBalance()
                 )
         );
 

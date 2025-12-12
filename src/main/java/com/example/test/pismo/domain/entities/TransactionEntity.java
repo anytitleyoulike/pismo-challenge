@@ -19,16 +19,19 @@ public class TransactionEntity {
     @Column(name = "amount", nullable = false)
     private Double amount;
 
+    @Column(name="balance")
+    private Double balance;
 
     public TransactionEntity() {
     }
 
     private Integer operationTypeId;
 
-    public TransactionEntity(AccountEntity account, Double amount, Integer operationTypeId) {
+    public TransactionEntity(AccountEntity account, Double amount, Integer operationTypeId, Double balance) {
         this.accountEntity = account;
         this.amount = amount;
         this.operationTypeId = operationTypeId;
+        this.balance = balance;
     }
 
     public Integer getId() {
@@ -61,5 +64,13 @@ public class TransactionEntity {
 
     public void setOperationTypeId(Integer operationTypeId) {
         this.operationTypeId = operationTypeId;
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public void setBalance(Double balance){
+        this.balance = balance;
     }
 }

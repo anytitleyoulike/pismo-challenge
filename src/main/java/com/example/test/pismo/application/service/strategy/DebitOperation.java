@@ -19,11 +19,14 @@ public class DebitOperation implements OperationStrategy {
     public TransactionEntity execute(AccountEntity accountEntity,TransactionDTO transactionDTO) {
         try {
             System.out.println("Processing DEBIT operation for amount: " + transactionDTO.amount());
+
             return transactionRepository.save(
                     new TransactionEntity(
                             accountEntity,
                             -Math.abs(transactionDTO.amount()),
-                            transactionDTO.operationTypeId().getOperationId())
+                            transactionDTO.operationTypeId().getOperationId(),
+                            -Math.abs(transactionDTO.amount()))
+
             );
         } catch(Exception e) {
             System.out.println("Error processing DEBIT operation: "+ e.getMessage());

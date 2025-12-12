@@ -9,7 +9,8 @@ public record TransactionResponse(
         int accountId,
         @JsonProperty("operation_type_id")
         int operationTypeId,
-        Double amount
+        Double amount,
+        Double balance
 
 ) {
 }
