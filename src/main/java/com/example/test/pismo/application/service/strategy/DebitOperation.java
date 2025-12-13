@@ -18,7 +18,7 @@ public class DebitOperation implements OperationStrategy {
     @Override
     public TransactionEntity execute(AccountEntity accountEntity,TransactionDTO transactionDTO) {
         try {
-            System.out.println("Processing DEBIT operation for amount: " + transactionDTO.amount());
+            System.out.println("Processing DEBIT operation for amount: " + -Math.abs(transactionDTO.amount()));
 
             return transactionRepository.save(
                     new TransactionEntity(
